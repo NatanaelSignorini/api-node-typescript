@@ -18,7 +18,7 @@ routes.get('/', (req, res) => {
 //routes.use('/', RoleRoutes)
 //routes.use('/', UserRoutes)
 
-// Resposta padrão para quaisquer outras requisições:
+// Resposta padrão para quaisquer outras requisições que não sao validas:
 routes.use((req, res) => {
   return res.status(404).send('Not Found');
 });
