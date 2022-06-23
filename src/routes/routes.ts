@@ -2,8 +2,8 @@ import { Router } from 'express';
 //import middleware from 'src/middleware/autheticate'
 
 //import AuthRoute from './AuthRoute'
-//import RoleRoutes from './RoleRoutes'
-//import UserRoutes from './UserRoutes'
+import RoleRoutes from './RoutesRole'
+//import UserRoutes from './RoutesUser'
 
 const routes = Router();
 
@@ -15,7 +15,7 @@ routes.get('/', (req, res) => {
 // Endpoit Routes
 //routes.use('/', AuthRoute)
 //routes.use('/', middleware.authenticateJWT, UserRoute)
-//routes.use('/', RoleRoutes)
+routes.use('/', RoleRoutes)
 //routes.use('/', UserRoutes)
 
 // Resposta padrão para quaisquer outras requisições que não sao validas:
