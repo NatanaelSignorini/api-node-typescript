@@ -13,6 +13,9 @@
     "style:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
     "style:fix": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "keywords": [
     "node",
     "node.js",
