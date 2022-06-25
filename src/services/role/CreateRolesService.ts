@@ -2,10 +2,11 @@ import prismaClient from '../../database/prisma'
 
 interface RoleRequest{
   name: string;
+  description: string;
 }
 
-class CreateRoleService {
-  async execute({ name }: RoleRequest){
+class CreateRolesService {
+  async execute({ name, description }: RoleRequest){
     
     if(!name){
       throw new Error("Role name incorrect")
@@ -22,7 +23,8 @@ class CreateRoleService {
     
     const role = await prismaClient.role.create({
       data:{
-        name:name
+        name:name,
+        description: description
       }
     })
 
@@ -30,4 +32,4 @@ class CreateRoleService {
     return role;
   }
 }
-export { CreateRoleService }
+export { CreateRolesService }

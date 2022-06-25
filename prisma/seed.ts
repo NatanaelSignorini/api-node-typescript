@@ -11,12 +11,13 @@ async function main() {
     data: {
       name: 'Admim',
       description: 'Admin Profile'
+      
     }
   })
   await prisma.role.create({
     data: {
       name: 'User',
-      description:'User Profile'
+      description: 'User Profile',
     }
   })  
 
