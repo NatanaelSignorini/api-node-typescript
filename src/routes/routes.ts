@@ -3,7 +3,7 @@ import { Router } from 'express';
 
 //import AuthRoute from './AuthRoute'
 import RoleRoutes from './RoutesRole'
-//import UserRoutes from './RoutesUser'
+import UserRoutes from './RoutesUser'
 
 const routes = Router();
 
@@ -16,7 +16,7 @@ routes.get('/', (req, res) => {
 //routes.use('/', AuthRoute)
 //routes.use('/', middleware.authenticateJWT, UserRoute)
 routes.use('/', RoleRoutes)
-//routes.use('/', UserRoutes)
+routes.use('/', UserRoutes)
 
 // Resposta padrão para quaisquer outras requisições que não sao validas:
 routes.use((req, res) => {

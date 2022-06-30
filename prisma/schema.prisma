@@ -31,7 +31,7 @@ model User {
   created_at     DateTime? @default(now())
   updated_at     DateTime? @default(now())
 
-  role_id String @unique
+  role_id String
   role    Role   @relation(fields: [role_id], references: [id])
 
 
