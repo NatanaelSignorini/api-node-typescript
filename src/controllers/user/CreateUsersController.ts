@@ -6,7 +6,7 @@ export class CreateUsersController {
     const { name, email, password, role_id} = request.body;
  
     const createUsersService = new CreateUsersService();
- 
+
     const result = await createUsersService.execute({
       name,
       email,

@@ -1,9 +1,10 @@
 import { Router } from 'express';
-//import middleware from 'src/middleware/autheticate'
+import {isAuthenticated} from '../middlewares/isAuthenticated'
 
-//import AuthRoute from './AuthRoute'
+import AuthRoute from './RouteAuth'
 import RoleRoutes from './RoutesRole'
 import UserRoutes from './RoutesUser'
+import MeRoute from './RouteMe'
 
 const routes = Router();
 
@@ -13,8 +14,8 @@ routes.get('/', (req, res) => {
 });
 
 // Endpoit Routes
-//routes.use('/', AuthRoute)
-//routes.use('/', middleware.authenticateJWT, UserRoute)
+routes.use('/', AuthRoute)
+routes.use('/', isAuthenticated, MeRoute)
 routes.use('/', RoleRoutes)
 routes.use('/', UserRoutes)
 
