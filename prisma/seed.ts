@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import AuthService from "../src/services/auth";
+import { hash } from 'bcrypt';
 
 
 const prisma = new PrismaClient();
@@ -21,8 +21,6 @@ async function main() {
     }
   })  
 
-  // Create password
-  const passwordHash = await AuthService.hashPassword('admin')
 
   const role = await prisma.role.findMany({
     where: {
@@ -34,6 +32,8 @@ async function main() {
   })
 
   // Create User
+  // Create password
+  const passwordHash = await hash('admin', 12)
   await prisma.user.create({
     data: {
       name: 'admin',
