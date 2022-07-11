@@ -1,6 +1,13 @@
 version: "3.9"
 
 services:
+  api_backend:
+    image: api_backend
+    depends_on:
+      - db_postgres
+    ports:
+      - "3333:3333"
+
   db_postgres:
     image: postgres
     environment:
@@ -8,14 +15,27 @@ services:
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: db_api_backend
     ports:
-    - "5432:5432"
+    - "15432:5432"
     volumes:
       - ./pgdata:/var/lib/postgresql/data
+    networks:
+      - network-postgres-pgadim
 
-  api_backend:
-    image:
+  teste-pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "renatogroff@yahoo.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2019!"
+    ports:
+      - "16543:80"
     depends_on:
       - db_postgres
-    ports:
-      - "3333:3333"
+    networks:
+      - network-postgres-pgadim
+
+networks: 
+  network-postgres-pgadim:
+    driver: bridge
+
+
 
